@@ -27,7 +27,7 @@ class ComicMainViewController: UIViewController {
             do{
                 let decoder = JSONDecoder()
                 let comicData = try decoder.decode(Comic.self, from: dataResponse)
-                print("My comic data is \(comicData)")
+                print("My comic data is \(comicData.comicResults[0].name)")
 //                DispatchQueue.main.async {
 //                    print(jsonResponse)
 //                }
