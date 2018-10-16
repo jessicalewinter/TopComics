@@ -9,24 +9,24 @@
 import UIKit
 
 struct Comic: Codable{
-    let comicResults: [ComicResults]
+    let characterResults: [CharacterResults]
 
     enum CodingKeys: String, CodingKey{
-        case comicResults = "results"
+        case characterResults = "results"
     }
     
     init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        comicResults = try container.decode([ComicResults].self, forKey: .comicResults)
+        characterResults = try container.decode([CharacterResults].self, forKey: .characterResults)
     }
     func encode(to encoder: Encoder) throws{
         var container = encoder.container(keyedBy: CodingKeys.self)
-        var comicResults = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .comicResults)
-        try comicResults.encode(self.comicResults, forKey: .comicResults)
+        var characterResults = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .characterResults)
+        try comicResults.encode(self.characterResults, forKey: .characterResults)
     }
 }
 
-struct ComicResults: Codable {
+struct CharacterResults: Codable {
     let name: String
     let realName: String
     let summary: String
