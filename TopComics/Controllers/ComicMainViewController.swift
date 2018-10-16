@@ -12,13 +12,12 @@ class ComicMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         parseJSON()
     }
     
     func parseJSON(){
         let apiKey = "2a6cf3cd37e3e9daa367f78efc63fbddee943b92"
-        var url = URL(string: "https://comicvine.gamespot.com/api/characters/?api_key=\(apiKey)&format=json&limit=2")!
+        var url = URL(string: "https://comicvine.gamespot.com/api/characters/?api_key=\(apiKey)&format=json&limit=1")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data, error == nil else{
@@ -26,11 +25,12 @@ class ComicMainViewController: UIViewController {
                 return
             }
             do{
-                let jsonResponse =  try JSONSerialization.jsonObject(with: dataResponse, options: [])
-                
-                DispatchQueue.main.async {
-                    print(jsonResponse)
-                }
+                let decoder = JSONDecoder()
+                let comicData = try decoder.decode(Comic.self, from: dataResponse)
+                print("My comic data is \(comicData)")
+//                DispatchQueue.main.async {
+//                    print(jsonResponse)
+//                }
                 
             } catch{
                 DispatchQueue.main.async {

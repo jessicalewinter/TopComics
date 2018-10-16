@@ -8,6 +8,21 @@
 
 import UIKit
 
-class Comic: NSObject {
-
+struct Comic: Codable {
+    let name: String
+    let image: String
+    let realName: String
+    let summary: String
+    let info: String
+    let publisher: String
+    
+    
+    enum CodingKeys: String, CodingKey{
+        case name
+        case image
+        case realName = "real_name"
+        case summary = "deck"
+        case info = "description"
+        case publisher
+    }
 }
