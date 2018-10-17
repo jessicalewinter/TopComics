@@ -9,27 +9,18 @@
 import UIKit
 
 struct Comic: Codable{
-    let characterResults: [CharacterResults]
+    var characterResults: [CharacterResults]
 
     enum CodingKeys: String, CodingKey{
         case characterResults = "results"
     }
     
-    init(from decoder: Decoder) throws{
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        characterResults = try container.decode([CharacterResults].self, forKey: .characterResults)
-    }
-    func encode(to encoder: Encoder) throws{
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        var characterResults = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .characterResults)
-        try comicResults.encode(self.characterResults, forKey: .characterResults)
-    }
 }
 
 struct CharacterResults: Codable {
-    let name: String
-    let realName: String
-    let summary: String
+    var name: String?
+    var realName: String?
+    var summary: String?
     let info: String
     
     enum CodingKeys: String, CodingKey{
@@ -41,9 +32,9 @@ struct CharacterResults: Codable {
     
     init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
-        realName =  try container.decode(String.self, forKey: .realName)
-        summary =  try container.decode(String.self, forKey: .summary)
+        name = try? container.decode(String.self, forKey: .name)
+        realName =  try? container.decode(String.self, forKey: .realName)
+        summary =  try? container.decode(String.self, forKey: .summary)
         info =  try container.decode(String.self, forKey: .info)
     }
     

@@ -17,23 +17,24 @@ class ComicMainViewController: UIViewController {
     
     func parseJSON(){
         let apiKey = "2a6cf3cd37e3e9daa367f78efc63fbddee943b92"
-        var url = URL(string: "https://comicvine.gamespot.com/api/characters/?api_key=\(apiKey)&format=json&limit=1")!
+        let url = URL(string: "https://comicvine.gamespot.com/api/characters/?api_key=\(apiKey)&format=json&limit=18")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data, error == nil else{
-                print("Error: \(error?.localizedDescription)" ?? "Error to fetch url")
+                print("Error: \(String(describing: error?.localizedDescription))")
                 return
             }
             do{
                 let decoder = JSONDecoder()
                 let comicData = try decoder.decode(Comic.self, from: dataResponse)
-                print("My comic data is \(comicData.comicResults[0].name)")
-//                DispatchQueue.main.async {
-//                    print(jsonResponse)
-//                }
+                
+                DispatchQueue.main.async {
+                    print("My comic data is \(comicData.characterResults[0])")
+                }
                 
             } catch{
                 DispatchQueue.main.async {
+                    print(error)
                     print("Unable to parse json in \(url)")
                 }
                 
