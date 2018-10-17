@@ -10,9 +10,14 @@ import UIKit
 
 class ComicMainViewController: UIViewController {
 
+    @IBOutlet weak var comicTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         parseJSON()
+        comicTableView.delegate = self
+        comicTableView.dataSource = self
+        comicTableView.register(UINib(nibName: "ComicTableViewCell", bundle: nil), forCellReuseIdentifier: "TableCell")
     }
     
     func parseJSON(){
@@ -29,7 +34,7 @@ class ComicMainViewController: UIViewController {
                 let comicData = try decoder.decode(Comic.self, from: dataResponse)
                 
                 DispatchQueue.main.async {
-                    print("My comic data is \(comicData.characterResults[0])")
+                    print("My comic data is \(comicData.characterResults[0].name!)")
                 }
                 
             } catch{
@@ -59,3 +64,33 @@ class ComicMainViewController: UIViewController {
     */
 
 }
+
+extension ComicMainViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = comicTableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ComicTableViewCell
+        cell.labelTableView.text = "oi"
+        return cell
+    }
+    
+    
+}
+
+
+//extension ComicMainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComicMainCollectionViewCell
+//        cell.labelComicCell.text = "Hello muggles"
+//        
+//        return cell
+//    }
+    
+    
+//}
