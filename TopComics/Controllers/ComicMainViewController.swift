@@ -11,7 +11,8 @@ import UIKit
 class ComicMainViewController: UIViewController {
 
     @IBOutlet weak var comicTableView: UITableView!
-    var comicArray = [Comic]()
+    
+    var comic: Comic?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,15 @@ class ComicMainViewController: UIViewController {
         comicTableView.delegate = self
         comicTableView.dataSource = self
         comicTableView.register(UINib(nibName: "ComicTableViewCell", bundle: nil), forCellReuseIdentifier: "TableCell")
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        headerView.backgroundColor = .blue
+        comicTableView.tableHeaderView = headerView
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.comicTableView.indexPathForSelectedRow{
+            self.comicTableView.deselectRow(at: index, animated: true)
+        }
     }
     
     func parseJSON(){
@@ -35,6 +45,8 @@ class ComicMainViewController: UIViewController {
                 let comicData = try decoder.decode(Comic.self, from: dataResponse)
                 
                 DispatchQueue.main.async {
+                    self.comic = comicData
+                    self.comicTableView.reloadData()
                     print("My comic data is \(comicData.characterResults[0].name!)")
                 }
                 
@@ -52,18 +64,6 @@ class ComicMainViewController: UIViewController {
         
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ComicMainViewController: UITableViewDataSource {
@@ -71,11 +71,12 @@ extension ComicMainViewController: UITableViewDataSource {
         return 10
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = comicTableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ComicTableViewCell
+        cell.comicArray = comic
         return cell
     }
     
@@ -84,21 +85,34 @@ extension ComicMainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return ""
-        } else {
-            return "fuck"
-        }
-        
+        return "fuck"
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        comicTableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
 
 extension ComicMainViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        
-        return view
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if section == 0{
+//            let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+//            view.backgroundColor = .blue
+//
+//            return view
+//        } else {
+//            return nil
+//        }
+//    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 0{
+//            return tableView.frame.size.height/2
+//        } else {
+//            return 0
+//        }
+//
+//    }
+    
 }
 
