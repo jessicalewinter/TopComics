@@ -9,14 +9,20 @@
 import UIKit
 
 class ComicTableViewCell: UITableViewCell {
-    @IBOutlet weak var labelTableView: UILabel!
+
     @IBOutlet weak var comicCollectionView: UICollectionView!
     let minimumInteritemSpacing: CGFloat = 10
     let minimumLineSpacing: CGFloat = 20
+    //let paginationCollectionView = UICollectionView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //paginationCollectionView
+//        paginationCollectionView.delegate = self
+//        paginationCollectionView.dataSource = self
+        //self.view.addSubView(paginationCollectionView)
+        //comicCollectionView
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.register(UINib(nibName: "ComicCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
@@ -37,8 +43,9 @@ extension ComicTableViewCell: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = comicCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! ComicCollectionViewCell
-         cell.labelComicCollection.text = "Spider-man"
-         cell.backgroundColor = .red
+        cell.labelComicCollection.text = "Spider-man"
+        cell.backgroundColor = .red
+        
         return cell
     }
 }
@@ -48,7 +55,7 @@ extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.size.width/2 - (minimumInteritemSpacing + minimumLineSpacing), height: collectionView.bounds.size.height - (minimumInteritemSpacing + minimumLineSpacing))
+        return CGSize(width: collectionView.bounds.size.width/2 - (minimumInteritemSpacing + minimumLineSpacing), height: collectionView.bounds.size.height)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

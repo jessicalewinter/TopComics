@@ -11,6 +11,7 @@ import UIKit
 class ComicMainViewController: UIViewController {
 
     @IBOutlet weak var comicTableView: UITableView!
+    var comicArray = [Comic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,17 +66,39 @@ class ComicMainViewController: UIViewController {
 
 }
 
-extension ComicMainViewController: UITableViewDelegate, UITableViewDataSource{
+extension ComicMainViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = comicTableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ComicTableViewCell
-        cell.labelTableView.text = "oi"
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return comicTableView.frame.size.height/2
+    }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return ""
+        } else {
+            return "fuck"
+        }
+        
+    }
+    
+}
+
+extension ComicMainViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        
+        return view
+    }
 }
 
