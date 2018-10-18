@@ -9,10 +9,13 @@
 import UIKit
 
 class ComicCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var imageComicCollection: UIImageView!
+    @IBOutlet weak var labelComicCollection: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
+    
 
 }

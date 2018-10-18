@@ -67,7 +67,7 @@ class ComicMainViewController: UIViewController {
 
 extension ComicMainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,18 +79,3 @@ extension ComicMainViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-
-//extension ComicMainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComicMainCollectionViewCell
-//        cell.labelComicCell.text = "Hello muggles"
-//        
-//        return cell
-//    }
-    
-    
-//}

@@ -109,8 +109,9 @@
 		0992C6B12176186A000877A7 /* TopComics */ = {
 			isa = PBXGroup;
 			children = (
-				0992C6E32176192B000877A7 /* Controllers */,
+				0992C6FC2178CDB6000877A7 /* Extensions */,
 				0992C6E521761951000877A7 /* Models */,
+				0992C6E32176192B000877A7 /* Controllers */,
 				0992C6E421761938000877A7 /* Views */,
 				0992C6F32177B6AC000877A7 /* Xibs */,
 				0992C6B22176186A000877A7 /* AppDelegate.swift */,
@@ -173,6 +174,13 @@
 				0992C6F52177C394000877A7 /* ComicTableViewCell.xib */,
 			);
 			path = Xibs;
+			sourceTree = "<group>";
+		};
+		0992C6FC2178CDB6000877A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
