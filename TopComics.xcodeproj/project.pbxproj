@@ -15,11 +15,15 @@
 		0992C6CB2176186C000877A7 /* TopComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6CA2176186C000877A7 /* TopComicsTests.swift */; };
 		0992C6D62176186C000877A7 /* TopComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6D52176186C000877A7 /* TopComicsUITests.swift */; };
 		0992C6E721761984000877A7 /* ComicMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6E621761984000877A7 /* ComicMainViewController.swift */; };
-		0992C6E9217625F8000877A7 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6E8217625F8000877A7 /* Comic.swift */; };
+		0992C6E9217625F8000877A7 /* ComicCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6E8217625F8000877A7 /* ComicCharacter.swift */; };
 		0992C6F62177C394000877A7 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6F42177C394000877A7 /* ComicTableViewCell.swift */; };
 		0992C6F72177C394000877A7 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6F52177C394000877A7 /* ComicTableViewCell.xib */; };
 		0992C6FA2177C8E3000877A7 /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6F82177C8E3000877A7 /* ComicCollectionViewCell.swift */; };
 		0992C6FB2177C8E3000877A7 /* ComicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6F92177C8E3000877A7 /* ComicCollectionViewCell.xib */; };
+		0992C7002179FCE9000877A7 /* PaginationHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6FF2179FCE9000877A7 /* PaginationHeader.xib */; };
+		0992C7022179FEED000877A7 /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C7012179FEED000877A7 /* APICalls.swift */; };
+		0992C78C217F5DA0000877A7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C78B217F5DA0000877A7 /* UIImageExtension.swift */; };
+		0992C78E217F61F9000877A7 /* ComicIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C78D217F61F9000877A7 /* ComicIssue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +58,15 @@
 		0992C6D52176186C000877A7 /* TopComicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopComicsUITests.swift; sourceTree = "<group>"; };
 		0992C6D72176186C000877A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0992C6E621761984000877A7 /* ComicMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicMainViewController.swift; sourceTree = "<group>"; };
-		0992C6E8217625F8000877A7 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		0992C6E8217625F8000877A7 /* ComicCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCharacter.swift; sourceTree = "<group>"; };
 		0992C6F42177C394000877A7 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		0992C6F52177C394000877A7 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
 		0992C6F82177C8E3000877A7 /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
 		0992C6F92177C8E3000877A7 /* ComicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCollectionViewCell.xib; sourceTree = "<group>"; };
+		0992C6FF2179FCE9000877A7 /* PaginationHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaginationHeader.xib; sourceTree = "<group>"; };
+		0992C7012179FEED000877A7 /* APICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
+		0992C78B217F5DA0000877A7 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		0992C78D217F61F9000877A7 /* ComicIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicIssue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +170,9 @@
 		0992C6E521761951000877A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0992C6E8217625F8000877A7 /* Comic.swift */,
+				0992C6E8217625F8000877A7 /* ComicCharacter.swift */,
+				0992C78D217F61F9000877A7 /* ComicIssue.swift */,
+				0992C7012179FEED000877A7 /* APICalls.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 			children = (
 				0992C6F92177C8E3000877A7 /* ComicCollectionViewCell.xib */,
 				0992C6F52177C394000877A7 /* ComicTableViewCell.xib */,
+				0992C6FF2179FCE9000877A7 /* PaginationHeader.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 		0992C6FC2178CDB6000877A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0992C78B217F5DA0000877A7 /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0992C7002179FCE9000877A7 /* PaginationHeader.xib in Resources */,
 				0992C6C02176186C000877A7 /* LaunchScreen.storyboard in Resources */,
 				0992C6F72177C394000877A7 /* ComicTableViewCell.xib in Resources */,
 				0992C6FB2177C8E3000877A7 /* ComicCollectionViewCell.xib in Resources */,
@@ -317,11 +330,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0992C6E721761984000877A7 /* ComicMainViewController.swift in Sources */,
-				0992C6E9217625F8000877A7 /* Comic.swift in Sources */,
+				0992C7022179FEED000877A7 /* APICalls.swift in Sources */,
+				0992C6E9217625F8000877A7 /* ComicCharacter.swift in Sources */,
 				0992C6FA2177C8E3000877A7 /* ComicCollectionViewCell.swift in Sources */,
+				0992C78E217F61F9000877A7 /* ComicIssue.swift in Sources */,
 				0992C6B32176186A000877A7 /* AppDelegate.swift in Sources */,
 				0992C6F62177C394000877A7 /* ComicTableViewCell.swift in Sources */,
 				0992C6BB2176186A000877A7 /* TopComics.xcdatamodeld in Sources */,
+				0992C78C217F5DA0000877A7 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

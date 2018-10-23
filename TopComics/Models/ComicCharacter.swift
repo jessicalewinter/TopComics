@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Comic: Codable{
+struct ComicCharacter: Codable{
     var characterResults: [CharacterResults]
 
     enum CodingKeys: String, CodingKey{

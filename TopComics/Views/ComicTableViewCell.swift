@@ -11,7 +11,7 @@ import UIKit
 class ComicTableViewCell: UITableViewCell {
     
     let imageCache = NSCache<NSString, UIImage>()
-    var comicArray: Comic? {
+    var comicArray: ComicIssue? {
         didSet {
             comicCollectionView.reloadData()
         }
@@ -25,43 +25,13 @@ class ComicTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //paginationCollectionView
-//        paginationCollectionView.delegate = self
-//        paginationCollectionView.dataSource = self
-        //self.view.addSubView(paginationCollectionView)
-        //comicCollectionView
+
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.register(UINib(nibName: "ComicCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func downloadImage(url: URL, completion: @escaping (URL, UIImage?, Error?) -> Void) {
-        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
-            completion(url, cachedImage, nil)
-        } else {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    completion(url, nil, error)
-                    
-                } else if let data = data, let image = UIImage(data: data) {
-                    self.imageCache.setObject(image, forKey: url.absoluteString as NSString)
-                    completion(url, image, nil)
-                } else {
-                    completion(url, nil, NSError(domain: url.absoluteString, code: 0, userInfo: nil))
-                }
-            }.resume()
-        }
-    }
-    
 }
-
-
 
 extension ComicTableViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,12 +40,11 @@ extension ComicTableViewCell: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = comicCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! ComicCollectionViewCell
-        cell.labelComicCollection.text = "Spider-man"
-        cell.backgroundColor = .red
-        
-        let characterResults = comicArray?.characterResults
-        cell.labelComicCollection.text = characterResults?[indexPath.row].name
-        
+        let issueResults = comicArray?.issueResults
+        cell.labelComicCollection.text = issueResults?[indexPath.row].name ?? "Null"
+        if let image = issueResults?[indexPath.row].image {
+            cell.imageComicCollection.dowloadFromServer(link: image, contentMode: .scaleAspectFill, imageCache: imageCache)
+        }
         return cell
     }
 }
@@ -98,12 +67,16 @@ extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return minimumInteritemSpacing
     }
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
-//    }
 }
 
-
+extension ComicTableViewCell: UIViewControllerPreviewingDelegate{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        <#code#>
+    }
+    
+    
+}
