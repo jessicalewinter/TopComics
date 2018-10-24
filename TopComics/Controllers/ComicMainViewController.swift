@@ -70,6 +70,16 @@ class ComicMainViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailSegue" {
+            guard let collectionCell = sender as? ComicCollectionViewCell else {return}
+            guard let collectionView = collectionCell.superview as? UICollectionView else { return }
+            if let destinationViewController = segue.destination as? ComicDetailViewController {
+                
+            }
+        }
+    }
+    
 }
 
 extension ComicMainViewController: UITableViewDataSource {

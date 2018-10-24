@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		097AEF0421809E2000AF587C /* PeekAndPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0321809E2000AF587C /* PeekAndPopViewController.swift */; };
 		097AEF062180B3F600AF587C /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF052180B3F600AF587C /* ComicDetailViewController.swift */; };
+		097AEF092180B85000AF587C /* CellCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */; };
 		0992C6B32176186A000877A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B22176186A000877A7 /* AppDelegate.swift */; };
 		0992C6B82176186A000877A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6B62176186A000877A7 /* Main.storyboard */; };
 		0992C6BB2176186A000877A7 /* TopComics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B92176186A000877A7 /* TopComics.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		097AEF0321809E2000AF587C /* PeekAndPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeekAndPopViewController.swift; sourceTree = "<group>"; };
 		097AEF052180B3F600AF587C /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
+		097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		0992C6AF2176186A000877A7 /* TopComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0992C6B22176186A000877A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0992C6B72176186A000877A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		097AEF072180B82200AF587C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		0992C6A62176186A000877A7 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		0992C6B12176186A000877A7 /* TopComics */ = {
 			isa = PBXGroup;
 			children = (
+				097AEF072180B82200AF587C /* Delegates */,
 				0992C6FC2178CDB6000877A7 /* Extensions */,
 				0992C6E521761951000877A7 /* Models */,
 				0992C6E32176192B000877A7 /* Controllers */,
@@ -337,6 +348,7 @@
 			files = (
 				0992C6E721761984000877A7 /* ComicMainViewController.swift in Sources */,
 				097AEF062180B3F600AF587C /* ComicDetailViewController.swift in Sources */,
+				097AEF092180B85000AF587C /* CellCollectionViewDelegate.swift in Sources */,
 				0992C7022179FEED000877A7 /* APICalls.swift in Sources */,
 				0992C6E9217625F8000877A7 /* ComicCharacter.swift in Sources */,
 				0992C6FA2177C8E3000877A7 /* ComicCollectionViewCell.swift in Sources */,

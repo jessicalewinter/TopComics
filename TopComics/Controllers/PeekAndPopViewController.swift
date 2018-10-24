@@ -34,7 +34,7 @@ class PeekAndPopViewController: UIViewController {
             print("Cancel the action")
         }
 
-        return [favoriteAction ,deleteAction]
+        return [seePhotoAction, favoriteAction, deleteAction]
     }
     
 

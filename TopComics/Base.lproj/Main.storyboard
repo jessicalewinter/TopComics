@@ -34,16 +34,17 @@
                     <navigationItem key="navigationItem" id="Nn4-cY-TKV"/>
                     <connections>
                         <outlet property="comicTableView" destination="dLQ-sd-7GP" id="foP-Cv-GNr"/>
+                        <segue destination="AHK-Hu-Ua7" kind="show" identifier="DetailSegue" id="LAd-dM-A4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1932" y="28.335832083958024"/>
         </scene>
-        <!--View Controller-->
+        <!--Comic Detail View Controller-->
         <scene sceneID="3Qp-mr-BHU">
             <objects>
-                <viewController id="AHK-Hu-Ua7" sceneMemberID="viewController">
+                <viewController id="AHK-Hu-Ua7" customClass="ComicDetailViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIO-SG-gZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
