@@ -12,7 +12,7 @@
         <!--Comic Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ComicMainViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ComicMain" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ComicMainViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,50 @@
             </objects>
             <point key="canvasLocation" x="1932" y="28.335832083958024"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="3Qp-mr-BHU">
+            <objects>
+                <viewController id="AHK-Hu-Ua7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TIO-SG-gZn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Oeb-jl-412"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KX-hZ-tav" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2785" y="28"/>
+        </scene>
+        <!--Peek And Pop View Controller-->
+        <scene sceneID="XFz-ep-ZrQ">
+            <objects>
+                <viewController storyboardIdentifier="ViewPeekAndPop" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MBC-jf-MdS" customClass="PeekAndPopViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qKo-bz-eNi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGt-SF-udv">
+                                <rect key="frame" x="56.5" y="43.5" width="262.5" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TGt-SF-udv" firstAttribute="width" secondItem="qKo-bz-eNi" secondAttribute="width" multiplier="0.7" id="3bB-FY-DDT"/>
+                            <constraint firstItem="TGt-SF-udv" firstAttribute="centerX" secondItem="0e2-sS-4EO" secondAttribute="centerX" id="HqS-8G-Fzz"/>
+                            <constraint firstItem="TGt-SF-udv" firstAttribute="height" secondItem="qKo-bz-eNi" secondAttribute="height" multiplier="0.9" id="PdH-6w-y1j"/>
+                            <constraint firstItem="TGt-SF-udv" firstAttribute="centerY" secondItem="0e2-sS-4EO" secondAttribute="centerY" id="WQz-nt-HxA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0e2-sS-4EO"/>
+                    </view>
+                    <connections>
+                        <outlet property="imagePeek" destination="TGt-SF-udv" id="3bS-1U-o3b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqO-bt-PN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1956" y="761"/>
+        </scene>
         <!--Item-->
         <scene sceneID="8k2-Xp-Ym9">
             <objects>
@@ -65,6 +109,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IBx-IJ-Gra" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="700-hm-AbD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

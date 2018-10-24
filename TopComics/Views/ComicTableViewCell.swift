@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComicTableViewCell: UITableViewCell {
+class ComicTableViewCell: UITableViewCell{
     
     let imageCache = NSCache<NSString, UIImage>()
     var comicArray: ComicIssue? {
@@ -69,14 +69,3 @@ extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
     }
 }
 
-extension ComicTableViewCell: UIViewControllerPreviewingDelegate{
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
-    }
-    
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        <#code#>
-    }
-    
-    
-}

@@ -11,9 +11,8 @@ import UIKit
 class ComicMainViewController: UIViewController {
 
     @IBOutlet weak var comicTableView: UITableView!
-    
+    let imageCache = NSCache<NSString, UIImage>()
     var comic: ComicIssue?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         parseJSON()
@@ -23,6 +22,12 @@ class ComicMainViewController: UIViewController {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         headerView.backgroundColor = .blue
         comicTableView.tableHeaderView = headerView
+        
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            registerForPreviewing(with: self, sourceView: comicTableView)
+        } else{
+            print("3D Touch not available")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +52,7 @@ class ComicMainViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.comic = comicData
                     self.comicTableView.reloadData()
-                    print("My comic data is \(comicData.issueResults[0].name)")
+                    print("My comic data is \(String(describing: comicData.issueResults[0].name))")
                 }
                 
             } catch{
@@ -64,6 +69,7 @@ class ComicMainViewController: UIViewController {
         
         
     }
+    
 }
 
 extension ComicMainViewController: UITableViewDataSource {
@@ -98,3 +104,32 @@ extension ComicMainViewController: UITableViewDelegate{
 
 }
 
+extension ComicMainViewController: UIViewControllerPreviewingDelegate{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let tableViewIndexPath = comicTableView.indexPathForRow(at: location) else { return nil }
+        guard let tableViewCell = comicTableView.cellForRow(at: tableViewIndexPath) as? ComicTableViewCell else { return nil }
+        guard let collectionView = tableViewCell.comicCollectionView else { return nil }
+        let collectionViewLocation = comicTableView.convert(location, to: collectionView)
+        guard let collectionViewIndexPath = collectionView.indexPathForItem(at: collectionViewLocation) else { return nil }
+        guard let collectionViewCell = collectionView.cellForItem(at: collectionViewIndexPath) as? ComicCollectionViewCell else { return nil }
+        
+        guard let previewView = storyboard?.instantiateViewController(withIdentifier: "ViewPeekAndPop") as? PeekAndPopViewController else {return nil}
+        previewView.preferredContentSize = CGSize(width: 0, height: 400)
+        previewView.image = collectionViewCell.imageComicCollection.image
+        
+        var sourceRect = collectionViewCell.frame
+        sourceRect.origin.x = sourceRect.origin.x - collectionView.contentOffset.x
+        
+        let y = tableViewCell.frame.origin.y + collectionViewCell.frame.origin.y
+        sourceRect.origin.y = y
+        previewingContext.sourceRect = sourceRect
+        return previewView
+       
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+    }
+    
+    
+}
