@@ -10,6 +10,9 @@
 		097AEF0421809E2000AF587C /* PeekAndPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0321809E2000AF587C /* PeekAndPopViewController.swift */; };
 		097AEF062180B3F600AF587C /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF052180B3F600AF587C /* ComicDetailViewController.swift */; };
 		097AEF092180B85000AF587C /* CellCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */; };
+		097AEF0B2180EEAA00AF587C /* ComicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097AEF0A2180EEAA00AF587C /* ComicDetailHeader.xib */; };
+		097AEF0D2180F53400AF587C /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0C2180F53400AF587C /* AlertDelegate.swift */; };
+		097AEF102180F97700AF587C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0F2180F97700AF587C /* PersistenceManager.swift */; };
 		0992C6B32176186A000877A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B22176186A000877A7 /* AppDelegate.swift */; };
 		0992C6B82176186A000877A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6B62176186A000877A7 /* Main.storyboard */; };
 		0992C6BB2176186A000877A7 /* TopComics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B92176186A000877A7 /* TopComics.xcdatamodeld */; };
@@ -50,6 +53,9 @@
 		097AEF0321809E2000AF587C /* PeekAndPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeekAndPopViewController.swift; sourceTree = "<group>"; };
 		097AEF052180B3F600AF587C /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		097AEF0A2180EEAA00AF587C /* ComicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeader.xib; sourceTree = "<group>"; };
+		097AEF0C2180F53400AF587C /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
+		097AEF0F2180F97700AF587C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0992C6AF2176186A000877A7 /* TopComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0992C6B22176186A000877A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0992C6B72176186A000877A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,8 +110,17 @@
 			isa = PBXGroup;
 			children = (
 				097AEF082180B85000AF587C /* CellCollectionViewDelegate.swift */,
+				097AEF0C2180F53400AF587C /* AlertDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		097AEF0E2180F95900AF587C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				097AEF0F2180F97700AF587C /* PersistenceManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		0992C6A62176186A000877A7 = {
@@ -131,6 +146,7 @@
 		0992C6B12176186A000877A7 /* TopComics */ = {
 			isa = PBXGroup;
 			children = (
+				097AEF0E2180F95900AF587C /* CoreData */,
 				097AEF072180B82200AF587C /* Delegates */,
 				0992C6FC2178CDB6000877A7 /* Extensions */,
 				0992C6E521761951000877A7 /* Models */,
@@ -200,6 +216,7 @@
 				0992C6F92177C8E3000877A7 /* ComicCollectionViewCell.xib */,
 				0992C6F52177C394000877A7 /* ComicTableViewCell.xib */,
 				0992C6FF2179FCE9000877A7 /* PaginationHeader.xib */,
+				097AEF0A2180EEAA00AF587C /* ComicDetailHeader.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -316,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097AEF0B2180EEAA00AF587C /* ComicDetailHeader.xib in Resources */,
 				0992C7002179FCE9000877A7 /* PaginationHeader.xib in Resources */,
 				0992C6C02176186C000877A7 /* LaunchScreen.storyboard in Resources */,
 				0992C6F72177C394000877A7 /* ComicTableViewCell.xib in Resources */,
@@ -347,12 +365,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0992C6E721761984000877A7 /* ComicMainViewController.swift in Sources */,
+				097AEF102180F97700AF587C /* PersistenceManager.swift in Sources */,
 				097AEF062180B3F600AF587C /* ComicDetailViewController.swift in Sources */,
 				097AEF092180B85000AF587C /* CellCollectionViewDelegate.swift in Sources */,
 				0992C7022179FEED000877A7 /* APICalls.swift in Sources */,
 				0992C6E9217625F8000877A7 /* ComicCharacter.swift in Sources */,
 				0992C6FA2177C8E3000877A7 /* ComicCollectionViewCell.swift in Sources */,
 				0992C78E217F61F9000877A7 /* ComicIssue.swift in Sources */,
+				097AEF0D2180F53400AF587C /* AlertDelegate.swift in Sources */,
 				0992C6B32176186A000877A7 /* AppDelegate.swift in Sources */,
 				0992C6F62177C394000877A7 /* ComicTableViewCell.swift in Sources */,
 				0992C6BB2176186A000877A7 /* TopComics.xcdatamodeld in Sources */,
