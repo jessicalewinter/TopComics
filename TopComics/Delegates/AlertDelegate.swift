@@ -8,8 +8,7 @@
 
 import UIKit
 
-protocol AlertDelegate {
-    func showAlert(viewController: UIViewController, window: UIWindow)
+protocol AlertDelegate: class {
+    func showAlert()
     
-   
 }

@@ -116,6 +116,7 @@ extension ComicMainViewController: UITableViewDelegate{
 
 extension ComicMainViewController: UIViewControllerPreviewingDelegate{
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
         guard let tableViewIndexPath = comicTableView.indexPathForRow(at: location) else { return nil }
         guard let tableViewCell = comicTableView.cellForRow(at: tableViewIndexPath) as? ComicTableViewCell else { return nil }
         guard let collectionView = tableViewCell.comicCollectionView else { return nil }
@@ -133,12 +134,30 @@ extension ComicMainViewController: UIViewControllerPreviewingDelegate{
         let y = tableViewCell.frame.origin.y + collectionViewCell.frame.origin.y
         sourceRect.origin.y = y
         previewingContext.sourceRect = sourceRect
+        
+        previewView.delegate = self
+        
         return previewView
        
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         
+    }
+    
+    
+}
+
+extension ComicMainViewController: AlertDelegate {
+    func showAlert() {
+        let firstAlert = UIAlertController(title: "Book has been added to your Favorite's List", message: "", preferredStyle: .alert)
+        let dismissFunc = {
+            firstAlert.dismiss(animated: true)
+        }
+        self.present(firstAlert, animated: true) {
+            let deadline = DispatchTime.now() + .seconds(1)
+            DispatchQueue.main.asyncAfter(deadline: deadline, execute: dismissFunc)
+        }
     }
     
     

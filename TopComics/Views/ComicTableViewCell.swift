@@ -42,8 +42,16 @@ extension ComicTableViewCell: UICollectionViewDataSource{
         let cell = comicCollectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! ComicCollectionViewCell
         let issueResults = comicArray?.issueResults
         cell.labelComicCollection.text = issueResults?[indexPath.row].name ?? "Null"
+        cell.row = indexPath.row
+        
         if let image = issueResults?[indexPath.row].image {
-            cell.imageComicCollection.dowloadFromServer(link: image, contentMode: .scaleAspectFill, imageCache: imageCache)
+            if let url = URL(string: image) {
+                cell.imageComicCollection.downloadedFrom(url: url, contentMode: .scaleAspectFill, row: indexPath.row, imageCache: imageCache) { (image, row) in
+                    if row == cell.row{
+                        cell.imageComicCollection.image = image
+                    }
+                }
+            }
         }
         return cell
     }

@@ -13,6 +13,7 @@
 		097AEF0B2180EEAA00AF587C /* ComicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097AEF0A2180EEAA00AF587C /* ComicDetailHeader.xib */; };
 		097AEF0D2180F53400AF587C /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0C2180F53400AF587C /* AlertDelegate.swift */; };
 		097AEF102180F97700AF587C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AEF0F2180F97700AF587C /* PersistenceManager.swift */; };
+		097AEF1321813B0700AF587C /* Anton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 097AEF1221813B0700AF587C /* Anton-Regular.ttf */; };
 		0992C6B32176186A000877A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B22176186A000877A7 /* AppDelegate.swift */; };
 		0992C6B82176186A000877A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0992C6B62176186A000877A7 /* Main.storyboard */; };
 		0992C6BB2176186A000877A7 /* TopComics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0992C6B92176186A000877A7 /* TopComics.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		097AEF0A2180EEAA00AF587C /* ComicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeader.xib; sourceTree = "<group>"; };
 		097AEF0C2180F53400AF587C /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		097AEF0F2180F97700AF587C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		097AEF1221813B0700AF587C /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Anton-Regular.ttf"; path = "../../../../Downloads/Anton/Anton-Regular.ttf"; sourceTree = "<group>"; };
 		0992C6AF2176186A000877A7 /* TopComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0992C6B22176186A000877A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0992C6B72176186A000877A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		097AEF1121813AD000AF587C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				097AEF1221813B0700AF587C /* Anton-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0992C6A62176186A000877A7 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 				0992C6E32176192B000877A7 /* Controllers */,
 				0992C6E421761938000877A7 /* Views */,
 				0992C6F32177B6AC000877A7 /* Xibs */,
+				097AEF1121813AD000AF587C /* Fonts */,
 				0992C6B22176186A000877A7 /* AppDelegate.swift */,
 				0992C6B62176186A000877A7 /* Main.storyboard */,
 				0992C6BC2176186C000877A7 /* Assets.xcassets */,
@@ -337,6 +348,7 @@
 				0992C7002179FCE9000877A7 /* PaginationHeader.xib in Resources */,
 				0992C6C02176186C000877A7 /* LaunchScreen.storyboard in Resources */,
 				0992C6F72177C394000877A7 /* ComicTableViewCell.xib in Resources */,
+				097AEF1321813B0700AF587C /* Anton-Regular.ttf in Resources */,
 				0992C6FB2177C8E3000877A7 /* ComicCollectionViewCell.xib in Resources */,
 				0992C6BD2176186C000877A7 /* Assets.xcassets in Resources */,
 				0992C6B82176186A000877A7 /* Main.storyboard in Resources */,

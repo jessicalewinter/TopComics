@@ -15,6 +15,8 @@ class PeekAndPopViewController: UIViewController {
     var image: UIImage?
     var window: UIWindow?
     
+    weak var delegate: AlertDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePeek.image = image
@@ -26,16 +28,9 @@ class PeekAndPopViewController: UIViewController {
     override var previewActionItems: [UIPreviewActionItem] {
         let favoriteAction = UIPreviewAction(title: "Favorite Comic", style: .default) { (action, viewController) in
             print("The user favorite the comic!")
-            let firstAlert = UIAlertController(title: "Alert", message: "Book has been added to your Favorite's List", preferredStyle: .alert)
-            let firstAlertCancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let firstAlertSaveButton = UIAlertAction(title: "Save", style: .default, handler: { (action) in
-
-            })
-
-            firstAlert.addAction(firstAlertCancelButton)
-            firstAlert.addAction(firstAlertSaveButton)
             
-            self.window?.rootViewController?.present(firstAlert, animated: true)
+            
+            self.delegate?.showAlert()
         }
         
         
