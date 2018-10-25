@@ -10,5 +10,4 @@ import UIKit
 
 protocol AlertDelegate: class {
     func showAlert()
-    
 }

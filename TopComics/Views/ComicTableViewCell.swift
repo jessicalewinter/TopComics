@@ -30,6 +30,8 @@ class ComicTableViewCell: UITableViewCell{
         comicCollectionView.dataSource = self
         comicCollectionView.register(UINib(nibName: "ComicCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionCell")
     }
+    
+    
 }
 
 
@@ -55,6 +57,7 @@ extension ComicTableViewCell: UICollectionViewDataSource{
         }
         return cell
     }
+    
 }
 
 extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
@@ -77,7 +80,7 @@ extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
     }
 }
 

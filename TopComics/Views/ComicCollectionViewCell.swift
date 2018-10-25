@@ -12,12 +12,14 @@ class ComicCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backgroundViewCell: UIView!
     @IBOutlet weak var imageComicCollection: UIImageView!
     @IBOutlet weak var labelComicCollection: UILabel!
+    var image: UIImage?
     
     var row: Int = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         addCornerImage(cornerRadius: 10, image: imageComicCollection)
         addCornerAndShadow(cornerRadius: 10, view: backgroundViewCell, shadowCorner: 10, shadowColor: UIColor.black.cgColor, shadowOpacity: 0.5, shadowOffset: .zero)
+        image = imageComicCollection.image
     }
     
     func addCornerImage(cornerRadius: CGFloat, image: UIImageView) {

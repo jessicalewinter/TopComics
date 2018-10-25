@@ -10,9 +10,11 @@ import UIKit
 
 class ComicDetailViewController: UIViewController {
 
+    @IBOutlet weak var bookDetailView: ComicDetailHeader!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bookDetailView.bookLabel.text = "hello"
         // Do any additional setup after loading the view.
     }
     

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Comic Main View Controller-->
+        <!--Featured-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ComicMain" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ComicMainViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Nn4-cY-TKV"/>
+                    <navigationItem key="navigationItem" title="Featured" id="Nn4-cY-TKV"/>
                     <connections>
                         <outlet property="comicTableView" destination="dLQ-sd-7GP" id="foP-Cv-GNr"/>
                         <segue destination="AHK-Hu-Ua7" kind="show" identifier="DetailSegue" id="LAd-dM-A4a"/>
@@ -41,20 +41,43 @@
             </objects>
             <point key="canvasLocation" x="1932" y="28.335832083958024"/>
         </scene>
-        <!--Comic Detail View Controller-->
+        <!--Book Details-->
         <scene sceneID="3Qp-mr-BHU">
             <objects>
-                <viewController id="AHK-Hu-Ua7" customClass="ComicDetailViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Book Details" id="AHK-Hu-Ua7" customClass="ComicDetailViewController" customModule="TopComics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIO-SG-gZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIc-eR-s3y" customClass="ComicDetailHeader" customModule="TopComics" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="166"/>
+                                <color key="backgroundColor" red="1" green="0.57681567007558365" blue="0.80876347205847132" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1O-5V-fZE">
+                                <rect key="frame" x="0.0" y="230" width="375" height="388"/>
+                                <color key="backgroundColor" red="1" green="0.77798842850000005" blue="0.55939576520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Oeb-jl-412" firstAttribute="trailing" secondItem="eIc-eR-s3y" secondAttribute="trailing" id="BDg-Kb-xL4"/>
+                            <constraint firstItem="D1O-5V-fZE" firstAttribute="top" secondItem="TIO-SG-gZn" secondAttribute="top" constant="230" id="CWZ-Hg-Lvi"/>
+                            <constraint firstItem="eIc-eR-s3y" firstAttribute="leading" secondItem="Oeb-jl-412" secondAttribute="leading" id="DYu-5g-UUf"/>
+                            <constraint firstItem="D1O-5V-fZE" firstAttribute="top" secondItem="eIc-eR-s3y" secondAttribute="bottom" id="Nj2-9X-aeu"/>
+                            <constraint firstItem="Oeb-jl-412" firstAttribute="trailing" secondItem="D1O-5V-fZE" secondAttribute="trailing" id="ZJC-Y5-xvq"/>
+                            <constraint firstItem="Oeb-jl-412" firstAttribute="bottom" secondItem="D1O-5V-fZE" secondAttribute="bottom" id="eOc-zl-fXG"/>
+                            <constraint firstItem="eIc-eR-s3y" firstAttribute="top" secondItem="Oeb-jl-412" secondAttribute="top" id="qxR-T0-hNg"/>
+                            <constraint firstItem="D1O-5V-fZE" firstAttribute="leading" secondItem="Oeb-jl-412" secondAttribute="leading" id="t3F-QS-W8K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Oeb-jl-412"/>
                     </view>
+                    <connections>
+                        <outlet property="bookDetailView" destination="eIc-eR-s3y" id="xmT-ZL-ZnE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1KX-hZ-tav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="28"/>
+            <point key="canvasLocation" x="2784.8000000000002" y="27.436281859070466"/>
         </scene>
         <!--Peek And Pop View Controller-->
         <scene sceneID="XFz-ep-ZrQ">
