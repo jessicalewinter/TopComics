@@ -60,6 +60,7 @@
 		097AEF0F2180F97700AF587C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		097AEF1221813B0700AF587C /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Anton-Regular.ttf"; path = "../../../../Downloads/Anton/Anton-Regular.ttf"; sourceTree = "<group>"; };
 		097AEF1621823D3B00AF587C /* ComicDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHeader.swift; sourceTree = "<group>"; };
+		097AEF1821838CAC00AF587C /* TopComics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TopComics.entitlements; sourceTree = "<group>"; };
 		0992C6AF2176186A000877A7 /* TopComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0992C6B22176186A000877A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0992C6B72176186A000877A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 		0992C6B12176186A000877A7 /* TopComics */ = {
 			isa = PBXGroup;
 			children = (
+				097AEF1821838CAC00AF587C /* TopComics.entitlements */,
 				097AEF0E2180F95900AF587C /* CoreData */,
 				097AEF072180B82200AF587C /* Delegates */,
 				0992C6FC2178CDB6000877A7 /* Extensions */,
@@ -311,6 +313,11 @@
 				TargetAttributes = {
 					0992C6AE2176186A000877A7 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0992C6C52176186C000877A7 = {
 						CreatedOnToolsVersion = 10.0;
@@ -568,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TopComics/TopComics.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FG6BFSTBUF;
 				INFOPLIST_FILE = TopComics/Info.plist;
@@ -586,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TopComics/TopComics.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FG6BFSTBUF;
 				INFOPLIST_FILE = TopComics/Info.plist;
