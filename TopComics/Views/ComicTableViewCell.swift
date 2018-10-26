@@ -9,7 +9,7 @@
 import UIKit
 
 class ComicTableViewCell: UITableViewCell{
-    
+    var delegate: CellCollectionViewDelegate?
     let imageCache = NSCache<NSString, UIImage>()
     var comicArray: ComicIssue? {
         didSet {
@@ -80,7 +80,8 @@ extension ComicTableViewCell: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ComicCollectionViewCell else {return}
+        self.delegate?.didSelect(cell: cell)
     }
 }
 

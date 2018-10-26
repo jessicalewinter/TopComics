@@ -24,7 +24,7 @@ class ComicDetailHeader: UIView {
         commonInit()
     }
     
-    private func commonInit() {
+    func commonInit() {
         Bundle.main.loadNibNamed("ComicDetailHeader", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds

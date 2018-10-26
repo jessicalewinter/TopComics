@@ -12,9 +12,17 @@ class ComicDetailViewController: UIViewController {
 
     @IBOutlet weak var bookDetailView: ComicDetailHeader!
     
+    var text: String?
+    var image: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookDetailView.bookLabel.text = "hello"
+        
+        print(text)
+        
+        bookDetailView.bookLabel.text = text
+        bookDetailView.bookImage.image = image
+        
         // Do any additional setup after loading the view.
     }
     

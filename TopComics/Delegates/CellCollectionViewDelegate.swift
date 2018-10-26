@@ -9,5 +9,5 @@
 import UIKit
 
 protocol CellCollectionViewDelegate {
-    func didSelect()
+    func didSelect(cell: ComicCollectionViewCell)
 }

@@ -71,29 +71,29 @@ class ComicMainViewController: UIViewController {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        let touch = touches.first!
-        let location = touch.location(in: comicTableView)
-        
-        guard let tableViewIndexPath = comicTableView.indexPathForRow(at: location) else { return }
-        guard let tableViewCell = comicTableView.cellForRow(at: tableViewIndexPath) as? ComicTableViewCell else { return }
-        guard let collectionView = tableViewCell.comicCollectionView else { return }
-        let collectionViewLocation = comicTableView.convert(location, to: collectionView)
-        guard let collectionViewIndexPath = collectionView.indexPathForItem(at: collectionViewLocation) else { return }
-        guard let collectionViewCell = collectionView.cellForItem(at: collectionViewIndexPath) as? ComicCollectionViewCell else { return }
-        
-        performSegue(withIdentifier: "DetailSegue", sender: collectionViewCell)
-        
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        let touch = touches.first!
+//        let location = touch.location(in: comicTableView)
+//
+//        guard let tableViewIndexPath = comicTableView.indexPathForRow(at: location) else { return }
+//        guard let tableViewCell = comicTableView.cellForRow(at: tableViewIndexPath) as? ComicTableViewCell else { return }
+//        guard let collectionView = tableViewCell.comicCollectionView else { return }
+//        let collectionViewLocation = comicTableView.convert(location, to: collectionView)
+//        guard let collectionViewIndexPath = collectionView.indexPathForItem(at: collectionViewLocation) else { return }
+//        guard let collectionViewCell = collectionView.cellForItem(at: collectionViewIndexPath) as? ComicCollectionViewCell else { return }
+//
+//        performSegue(withIdentifier: "DetailSegue", sender: collectionViewCell)
+//
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {
             guard let collectionCell = sender as? ComicCollectionViewCell else {return}
-            guard let collectionView = collectionCell.superview as? UICollectionView else { return }
+            //guard let collectionView = collectionCell.superview as? UICollectionView else { return }
             if let destinationViewController = segue.destination as? ComicDetailViewController {
-                destinationViewController.bookDetailView.bookLabel.text = collectionCell.labelComicCollection.text
-                destinationViewController.bookDetailView.bookImage = collectionCell.imageComicCollection
+                destinationViewController.text = collectionCell.labelComicCollection.text
+                destinationViewController.image = collectionCell.imageComicCollection.image
             }
         }
     }
@@ -111,6 +111,7 @@ extension ComicMainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = comicTableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! ComicTableViewCell
         cell.comicArray = comic
+        cell.delegate = self
         return cell
     }
     
@@ -126,6 +127,12 @@ extension ComicMainViewController: UITableViewDataSource {
         comicTableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+extension ComicMainViewController: CellCollectionViewDelegate{
+    func didSelect(cell: ComicCollectionViewCell) {
+        performSegue(withIdentifier: "DetailSegue", sender: cell)
+    }
 }
 
 extension ComicMainViewController: UITableViewDelegate{
@@ -177,6 +184,4 @@ extension ComicMainViewController: AlertDelegate {
             DispatchQueue.main.asyncAfter(deadline: deadline, execute: dismissFunc)
         }
     }
-    
-    
 }
