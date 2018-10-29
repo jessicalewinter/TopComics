@@ -16,20 +16,19 @@ class PeekAndPopViewController: UIViewController {
     var window: UIWindow?
     
     weak var delegate: AlertDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePeek.image = image
         window?.rootViewController = PeekAndPopViewController()
         
-        // Do any additional setup after loading the view.
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
         let favoriteAction = UIPreviewAction(title: "Favorite Comic", style: .default) { (action, viewController) in
             print("The user favorite the comic!")
             
-            
+            self.saveImage(image: self.imagePeek.image!, fileName: "Image3")
             self.delegate?.showAlert()
         }
         
