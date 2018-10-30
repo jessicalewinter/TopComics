@@ -29,7 +29,7 @@ class ComicMainViewController: UIViewController {
             print("3D Touch not available")
         }
         
-            }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         if let index = self.comicTableView.indexPathForSelectedRow{
@@ -71,21 +71,6 @@ class ComicMainViewController: UIViewController {
         
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        let touch = touches.first!
-//        let location = touch.location(in: comicTableView)
-//
-//        guard let tableViewIndexPath = comicTableView.indexPathForRow(at: location) else { return }
-//        guard let tableViewCell = comicTableView.cellForRow(at: tableViewIndexPath) as? ComicTableViewCell else { return }
-//        guard let collectionView = tableViewCell.comicCollectionView else { return }
-//        let collectionViewLocation = comicTableView.convert(location, to: collectionView)
-//        guard let collectionViewIndexPath = collectionView.indexPathForItem(at: collectionViewLocation) else { return }
-//        guard let collectionViewCell = collectionView.cellForItem(at: collectionViewIndexPath) as? ComicCollectionViewCell else { return }
-//
-//        performSegue(withIdentifier: "DetailSegue", sender: collectionViewCell)
-//
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue" {

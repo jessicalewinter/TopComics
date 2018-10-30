@@ -45,5 +45,9 @@
 	<array>
 		<string>Anton-Regular.ttf</string>
 	</array>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>
