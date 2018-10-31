@@ -18,7 +18,7 @@ class ComicMainViewController: UIViewController {
         super.viewDidLoad()
         //let dispatchGroup = DispatchGroup()
         
-        let url = "https://comicvine.gamespot.com/api/issues/?"
+        let url = "https://comicvine.gamespot.com/api/issues/?&sort=cover_date:desc"
         
         parseJSON(string: url) { (comic:ComicIssue?, error) in
             DispatchQueue.main.async {
