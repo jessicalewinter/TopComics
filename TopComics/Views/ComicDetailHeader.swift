@@ -29,5 +29,8 @@ class ComicDetailHeader: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        bookLabel.adjustsFontSizeToFitWidth = true
+        bookLabel.minimumScaleFactor = 0.2
+        
     }
 }

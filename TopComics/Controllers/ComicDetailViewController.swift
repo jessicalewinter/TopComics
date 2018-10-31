@@ -18,7 +18,6 @@ class ComicDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(text)
         
         bookDetailView.bookLabel.text = text
         bookDetailView.bookImage.image = image

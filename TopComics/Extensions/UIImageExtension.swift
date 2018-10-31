@@ -59,8 +59,4 @@ extension UIImageView {
             }.resume()
         }
     }
-//    func dowloadFromServer(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFill,  imageCache: NSCache<NSString, UIImage>) {
-//        guard let url = URL(string: link) else { return }
-//        dowloadFromServer(url: url, contentMode: mode, imageCache: imageCache)
-//    }
 }

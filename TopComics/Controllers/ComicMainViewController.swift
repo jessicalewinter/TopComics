@@ -13,16 +13,30 @@ class ComicMainViewController: UIViewController {
     @IBOutlet weak var comicTableView: UITableView!
     let imageCache = NSCache<NSString, UIImage>()
     var comic: ComicIssue?
+    var sectionLabels = ["Most Viewed Comics", "Recent Comics", "Popular Comics", "Batman Comics", "Marvel Comics"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        parseJSON()
+        //let dispatchGroup = DispatchGroup()
+        
+        let url = "https://comicvine.gamespot.com/api/issues/?"
+        
+        parseJSON(string: url) { (comic:ComicIssue?, error) in
+            DispatchQueue.main.async {
+                self.comic = comic
+                self.comicTableView.reloadData()
+            }
+        }
+        
         comicTableView.delegate = self
         comicTableView.dataSource = self
         comicTableView.register(UINib(nibName: "ComicTableViewCell", bundle: nil), forCellReuseIdentifier: "TableCell")
+        //style of tableView
+        comicTableView.separatorStyle = .none
+        //header
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         headerView.backgroundColor = .blue
         comicTableView.tableHeaderView = headerView
-        
+        //verify if the dispositive has peek and pop
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             registerForPreviewing(with: self, sourceView: comicTableView)
         } else{
@@ -37,29 +51,30 @@ class ComicMainViewController: UIViewController {
         }
     }
     
-    func parseJSON(){
-        let apiKey = "2a6cf3cd37e3e9daa367f78efc63fbddee943b92"
-        let url = URL(string: "https://comicvine.gamespot.com/api/issues/?api_key=\(apiKey)&format=json&limit=18")!
+    func parseJSON<T: Codable>(string: String, completion: @escaping (T?, Error?) -> Void){
+        let apiKeyQuery = URLQueryItem(name: "api_key", value: "2a6cf3cd37e3e9daa367f78efc63fbddee943b92")
+        let jsonFormat = URLQueryItem(name: "format", value: "json")
+
+        var url = URLComponents(string: string)
+        url?.queryItems?.append(apiKeyQuery)
+        url?.queryItems?.append(jsonFormat)
+        guard let realUrl = url?.url else {return}
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: realUrl) { (data, response, error) in
             guard let dataResponse = data, error == nil else{
                 print("Error: \(String(describing: error?.localizedDescription))")
+                completion(nil, error)
                 return
             }
             do{
                 let decoder = JSONDecoder()
-                let comicData = try decoder.decode(ComicIssue.self, from: dataResponse)
-                
-                DispatchQueue.main.async {
-                    self.comic = comicData
-                    self.comicTableView.reloadData()
-                    print("My comic data is \(String(describing: comicData.issueResults[0].name))")
-                }
-                
+                let comicData = try decoder.decode(T.self, from: dataResponse)
+                completion(comicData, nil)
             } catch{
                 DispatchQueue.main.async {
                     print(error)
-                    print("Unable to parse json in \(url)")
+                    print("Unable to parse json in \(String(describing: url))")
+                    completion(nil, error)
                 }
                 
             }
@@ -67,8 +82,6 @@ class ComicMainViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             task.resume()
         }
-        
-        
     }
     
     
@@ -87,7 +100,7 @@ class ComicMainViewController: UIViewController {
 
 extension ComicMainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -105,7 +118,24 @@ extension ComicMainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "fuck"
+        if section == 0{
+            return self.sectionLabels[0]
+        } else if section == 1 {
+            return self.sectionLabels[1]
+        } else if section == 2 {
+            return self.sectionLabels[2]
+        } else if section == 3 {
+            return self.sectionLabels[3]
+        } else if section == 4 {
+            return self.sectionLabels[4]
+        }
+        return "Fuck"
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.backgroundView?.backgroundColor = UIColor.white
+            header.textLabel?.font = UIFont(name: "Anton", size: 20)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
