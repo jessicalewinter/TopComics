@@ -33,9 +33,10 @@ class ComicMainViewController: UIViewController {
         //style of tableView
         comicTableView.separatorStyle = .none
         //header
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        headerView.backgroundColor = .blue
-        comicTableView.tableHeaderView = headerView
+        self.configureHeaderView()
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+//        headerView.backgroundColor = .blue
+//        comicTableView.tableHeaderView = headerView
         //verify if the dispositive has peek and pop
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             registerForPreviewing(with: self, sourceView: comicTableView)
@@ -200,3 +201,39 @@ extension ComicMainViewController: AlertDelegate {
         }
     }
 }
+
+extension ComicMainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
+    func configureHeaderView(){
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let headerView = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200), collectionViewLayout: layout)
+        headerView.backgroundColor = .blue
+        headerView.isPagingEnabled = true
+        headerView.isUserInteractionEnabled = true
+        headerView.dataSource = self
+        headerView.delegate = self
+        headerView.register(UINib(nibName: "BannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BannerCell")
+        headerView.showsHorizontalScrollIndicator = false
+        
+        comicTableView.tableHeaderView = headerView
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCell", for: indexPath) as! BannerCollectionViewCell
+//        cell?.bannerImage = ima
+//        cell.bannerImage.image = comic?.issueResults[indexPath.row]
+        return cell
+    }
+    
+    
+}
+
